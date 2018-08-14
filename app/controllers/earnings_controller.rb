@@ -5,8 +5,8 @@ require "json"
 
 class EarningsController < ApplicationController
   def initialize
-    @key = ""
-    @secret = ""
+    @key = Settings.coincheck[:key]
+    @secret = Settings.coincheck[:secret]
     @base_url = "https://coincheck.com"
     @version = "0.3.0"
   end
