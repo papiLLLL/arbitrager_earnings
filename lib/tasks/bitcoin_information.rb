@@ -11,23 +11,23 @@ class BitcoinInformation
   end
 
   def start
-    get_ticker
-    get_balance
+    btc_price = get_ticker
+    jpy_balance, btc_balance = get_balance
+    insert_data(jpy_balance, btc_balance, btc_price)
   end
 
   def get_ticker
     uri = URI.parse(@base_url + "/api/ticker")
     headers = get_signature(uri, @key, @secret)
     response = request_http(uri, headers)
-    puts response["last"]
+    response["last"]
   end
 
   def get_balance
     uri = URI.parse(@base_url + "/api/accounts/balance")
     headers = get_signature(uri, @key, @secret)
     response = request_http(uri, headers)
-    puts response["jpy"].to_i.floor
-    puts response["btc"].to_f.truncate(3)
+    return response["jpy"].to_i.floor, response["btc"].to_f.truncate(3)
   end
 
   def get_signature(uri, key, secret, body = "")
@@ -48,6 +48,16 @@ class BitcoinInformation
       https.get(uri.request_uri, headers)
     }
     JSON.parse(response.body)
+  end
+
+  def insert_data(jpy_balance, btc_balance, btc_price)
+    puts Time.now.strftime("%Y-%m-%d")
+    puts calculate_total_jpy(jpy_balance, btc_balance, btc_price)
+    puts btc_price
+  end
+
+  def calculate_total_jpy(jpy_balance, btc_balance, btc_price)
+    (jpy_balance + btc_balance * btc_price).floor
   end
 end
 
