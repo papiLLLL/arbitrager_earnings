@@ -1,0 +1,2 @@
+class ExchangeInformation < ApplicationRecord
+end

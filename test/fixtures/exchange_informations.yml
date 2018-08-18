@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: MyText
+  name: MyText
+  jpy_balance: 1
+  btc_balance: 1.5
+  btc_price: 1
+
+two:
+  date: MyText
+  name: MyText
+  jpy_balance: 1
+  btc_balance: 1.5
+  btc_price: 1
