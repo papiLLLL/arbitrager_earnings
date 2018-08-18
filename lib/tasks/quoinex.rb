@@ -2,14 +2,15 @@ require "net/http"
 require "uri"
 require "openssl"
 require "json"
+require "jwt"
 
-class Coincheck
+class Quoinex
   def initialize
     @today = Time.now.strftime("%Y-%m-%d")
-    @name = "Coincheck"
-    @key = Settings.coincheck[:key]
-    @secret = Settings.coincheck[:secret]
-    @base_url = "https://coincheck.com"
+    @name = "Quoinex"
+    @key = Settings.quoinex[:key]
+    @secret = Settings.quoinex[:secret]
+    @base_url = "https://api.quoine.com"
   end
 
   def start
@@ -20,36 +21,42 @@ class Coincheck
   end
 
   def get_ticker
-    uri = URI.parse(@base_url + "/api/ticker")
-    headers = get_signature(uri, @key, @secret)
-    response = request_http(uri, headers)
-    response["last"].to_i.floor
+    uri = URI.parse(@base_url)
+    path = "/products/5"
+    signature = get_signature(path, @key, @secret)
+    response = request_http(uri, path, signature)
+    response["last_traded_price"].to_i.floor
   end
 
   def get_balance
-    uri = URI.parse(@base_url + "/api/accounts/balance")
-    headers = get_signature(uri, @key, @secret)
-    response = request_http(uri, headers)
-    return response["jpy"].to_i.floor, response["btc"].to_f.truncate(3)
+    uri = URI.parse(@base_url)
+    path = "/accounts/balance"
+    signature = get_signature(path, @key, @secret)
+    response = request_http(uri, path, signature)
+    return response[0]["balance"].to_i.floor, response[-1]["balance"].to_f.truncate(3)
   end
 
-  def get_signature(uri, key, secret, body = "")
+  def get_signature(path, key, secret)
     timestamp = Time.now.to_i.to_s
-    message = timestamp + uri.to_s + body
-    signature = OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new("sha256"), secret, message)
-    headers = {
-      "ACCESS-KEY" => key,
-      "ACCESS-NONCE" => timestamp,
-      "ACCESS-SIGNATURE" => signature
+    auth_payload = {
+      path: path,
+      nonce: timestamp,
+      token_id: key
     }
+
+    JWT.encode(auth_payload, secret, "HS256")
   end
 
-  def request_http(uri, headers)
+  def request_http(uri, path, signature)
     https = Net::HTTP.new(uri.host, uri.port)
     https.use_ssl = true
-    response = https.start {
-      https.get(uri.request_uri, headers)
-    }
+
+    request = Net::HTTP::Get.new(path)
+    request.add_field("X-Quoine-API-Version", "2")
+    request.add_field("X-Quoine-AUth", signature)
+    request.add_field("Content-Type", "application/json")
+
+    response = https.request(request)
     JSON.parse(response.body)
   end
 
@@ -74,17 +81,17 @@ class Coincheck
   end
 
   def get_data_yesterday
-    ExchangeInformation.last
+    ExchangeInformation.where("name = '#{@name}'").last
   end
 
   def calculate_profit(jpy_balance, btc_balance, btc_price, data_yesterday)
     btc_difference = btc_balance * btc_price - data_yesterday.btc_balance * data_yesterday.btc_price
     total_jpy_balance = (jpy_balance + btc_balance * btc_price).floor
     profit = (jpy_balance - data_yesterday.jpy_balance + btc_difference).floor.to_f
-    profit_rate = (profit / total_jpy_balance * 100).truncate(2)
+    profit_rate = (profit / total_jpy_balance * 100).truncate(3)
     return total_jpy_balance, profit, profit_rate
   end
 end
 
-cc = Coincheck.new
-cc.start
+qu = Quoinex.new
+qu.start
