@@ -16,7 +16,8 @@ class Quoinex
   def start
     btc_price = get_ticker
     jpy_balance, btc_balance = get_balance
-    insert_data_to_profit(jpy_balance, btc_balance, btc_price)
+    data_yesterday = get_data_yesterday
+    insert_data_to_profit(jpy_balance, btc_balance, btc_price, data_yesterday) if data_yesterday
     insert_data_to_exchange_information(jpy_balance, btc_balance, btc_price)
   end
 
@@ -70,8 +71,8 @@ class Quoinex
     ei.save
   end
 
-  def insert_data_to_profit(jpy_balance, btc_balance, btc_price)
-    total_jpy_balance, profit, profit_rate = calculate_profit(jpy_balance, btc_balance, btc_price, get_data_yesterday)
+  def insert_data_to_profit(jpy_balance, btc_balance, btc_price, data_yesterday)
+    total_jpy_balance, profit, profit_rate = calculate_profit(jpy_balance, btc_balance, btc_price, data_yesterday)
     pr = Profit.new
     pr.date = @today
     pr.total_jpy_balance = total_jpy_balance
@@ -85,7 +86,8 @@ class Quoinex
   end
 
   def calculate_profit(jpy_balance, btc_balance, btc_price, data_yesterday)
-    btc_difference = btc_balance * btc_price - data_yesterday.btc_balance * data_yesterday.btc_price
+    btc_difference = btc_balance * btc_price -
+     data_yesterday.btc_balance * data_yesterday.btc_price
     total_jpy_balance = (jpy_balance + btc_balance * btc_price).floor
     profit = (jpy_balance - data_yesterday.jpy_balance + btc_difference).floor.to_f
     profit_rate = (profit / total_jpy_balance * 100).truncate(3)
