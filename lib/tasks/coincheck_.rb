@@ -5,6 +5,8 @@ require "json"
 
 class BitcoinInformation
   def initialize
+    @today = Time.now.strftime("%Y-%m-%d")
+    @name = "Coincheck"
     @key = Settings.coincheck[:key]
     @secret = Settings.coincheck[:secret]
     @base_url = "https://coincheck.com"
@@ -13,7 +15,8 @@ class BitcoinInformation
   def start
     btc_price = get_ticker
     jpy_balance, btc_balance = get_balance
-    insert_data(jpy_balance, btc_balance, btc_price)
+    insert_data_to_profit(jpy_balance, btc_balance, btc_price)
+    insert_data_to_exchange_information(jpy_balance, btc_balance, btc_price)
   end
 
   def get_ticker
@@ -50,14 +53,36 @@ class BitcoinInformation
     JSON.parse(response.body)
   end
 
-  def insert_data(jpy_balance, btc_balance, btc_price)
-    puts Time.now.strftime("%Y-%m-%d")
-    puts calculate_total_jpy(jpy_balance, btc_balance, btc_price)
-    puts btc_price
+  def insert_data_to_exchange_information(jpy_balance, btc_balance, btc_price)
+    ei = ExchangeInformation.new
+    ei.date = @today
+    ei.name = @name
+    ei.jpy_balance = jpy_balance
+    ei.btc_balance = btc_balance
+    ei.btc_price = btc_price
+    ei.save
   end
 
-  def calculate_total_jpy(jpy_balance, btc_balance, btc_price)
-    (jpy_balance + btc_balance * btc_price).floor
+  def insert_data_to_profit(jpy_balance, btc_balance, btc_price)
+    total_jpy_balance, profit, profit_rate = calculate_profit(jpy_balance, btc_balance, btc_price, get_data_yesterday)
+    pr = Profit.new
+    pr.date = @today
+    pr.total_jpy_balance = total_jpy_balance
+    pr.profit = profit
+    pr.profit_rate = profit_rate
+    pr.save
+  end
+
+  def get_data_yesterday
+    ExchangeInformation.last
+  end
+
+  def calculate_profit(jpy_balance, btc_balance, btc_price, data_yesterday)
+    btc_difference = btc_balance * btc_price - data_yesterday.btc_balance * data_yesterday.btc_price
+    total_jpy_balance = (jpy_balance + btc_balance * btc_price).floor
+    profit = (jpy_balance - data_yesterday.jpy_balance + btc_difference).floor.to_f
+    profit_rate = (profit / total_jpy_balance * 100).truncate(2)
+    return total_jpy_balance, profit, profit_rate
   end
 end
 
