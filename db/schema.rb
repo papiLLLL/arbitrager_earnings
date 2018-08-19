@@ -12,34 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2018_08_18_001942) do
 
-  create_table "bitcoin_informations", force: :cascade do |t|
-    t.text "date"
-    t.integer "total_jpy_balance"
-    t.integer "btc_balance"
-    t.integer "btc_price"
-    t.integer "profit"
-    t.integer "profit_rate"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "coinchecks", force: :cascade do |t|
-    t.text "date"
-    t.integer "total_jpy_balance"
-    t.integer "btc_balance"
-    t.integer "btc_price"
-    t.integer "profit"
-    t.integer "profit_rate"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "exchange_informations", force: :cascade do |t|
     t.text "date"
     t.text "name"
     t.integer "jpy_balance"
     t.float "btc_balance"
     t.integer "btc_price"
+    t.integer "balance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -47,6 +26,8 @@ ActiveRecord::Schema.define(version: 2018_08_18_001942) do
   create_table "profits", force: :cascade do |t|
     t.text "date"
     t.integer "total_jpy_balance"
+    t.integer "total_btc_balance"
+    t.integer "average_btc_price"
     t.integer "profit"
     t.float "profit_rate"
     t.datetime "created_at", null: false

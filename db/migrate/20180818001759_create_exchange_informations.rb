@@ -6,6 +6,7 @@ class CreateExchangeInformations < ActiveRecord::Migration[5.2]
       t.integer :jpy_balance
       t.float :btc_balance
       t.integer :btc_price
+      t.integer :balance
 
       t.timestamps
     end

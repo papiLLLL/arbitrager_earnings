@@ -13,11 +13,13 @@ class Coincheck
   end
 
   def start
+    puts "#{@name} start"
     btc_price = get_ticker
     jpy_balance, btc_balance = get_balance
     data_yesterday = get_data_yesterday
     insert_data_to_profit(jpy_balance, btc_balance, btc_price, data_yesterday) if data_yesterday
     insert_data_to_exchange_information(jpy_balance, btc_balance, btc_price)
+    puts "#{@name} end"
   end
 
   def get_ticker
@@ -61,6 +63,7 @@ class Coincheck
     ei.jpy_balance = jpy_balance
     ei.btc_balance = btc_balance
     ei.btc_price = btc_price
+    ei.balance = (jpy_balance + btc_balance * btc_price).floor
     ei.save
   end
 
@@ -86,6 +89,3 @@ class Coincheck
     return total_jpy_balance, profit, profit_rate
   end
 end
-
-cc = Coincheck.new
-cc.start
