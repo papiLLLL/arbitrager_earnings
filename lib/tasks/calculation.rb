@@ -37,14 +37,12 @@ class Calculation
 
   def insert_data_to_profit(total_jpy_balance, total_btc_balance,
                               average_btc_price, total_balance, profit, profit_rate)
-    puts total_btc_balance
-    puts average_btc_price
     pr = Profit.new
     pr.date = @today
     pr.total_jpy_balance = total_jpy_balance
     pr.total_btc_balance = total_btc_balance
     pr.average_btc_price = average_btc_price
-    #pr.total_balance = total_balance
+    pr.total_balance = total_balance
     pr.profit = profit
     pr.profit_rate = profit_rate
     pr.save
