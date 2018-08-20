@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2018_08_18_001942) do
   create_table "profits", force: :cascade do |t|
     t.text "date"
     t.integer "total_jpy_balance"
-    t.integer "total_btc_balance"
+    t.float "total_btc_balance"
     t.integer "average_btc_price"
     t.integer "total_balance"
     t.integer "profit"
