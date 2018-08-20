@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: MyText
+  total_jpy_balance: 1
+  profit: 1
+  profit_rate: 1.5
+
+two:
+  date: MyText
+  total_jpy_balance: 1
+  profit: 1
+  profit_rate: 1.5
