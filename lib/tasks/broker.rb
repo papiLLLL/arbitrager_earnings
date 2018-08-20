@@ -9,13 +9,12 @@ class Broker
 
   def start
     puts "broker start"
-    #get_exchange_information(@exchange)
-    calc = Calculation.new
-    calc.calculate_profit
+    start_exchange_api(@exchange)
+    start_calculation
     puts "broker end"
   end
 
-  def get_exchange_information(exchange)
+  def start_exchange_api(exchange)
     threads = []
     exchange.each do |ex|
       threads << Thread.new do
@@ -24,6 +23,11 @@ class Broker
     end
 
     threads.each { |t| t.join }
+  end
+
+  def start_calculation
+    calc = Calculation.new
+    calc.start
   end
 end
 

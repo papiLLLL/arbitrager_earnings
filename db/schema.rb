@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2018_08_18_001942) do
     t.integer "total_jpy_balance"
     t.integer "total_btc_balance"
     t.integer "average_btc_price"
+    t.integer "total_balance"
     t.integer "profit"
     t.float "profit_rate"
     t.datetime "created_at", null: false
