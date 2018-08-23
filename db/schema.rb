@@ -13,21 +13,19 @@
 ActiveRecord::Schema.define(version: 2018_08_18_001942) do
 
   create_table "exchange_informations", force: :cascade do |t|
-    t.text "date"
+    t.text "created_on"
     t.text "name"
     t.integer "jpy_balance"
     t.float "btc_balance"
     t.integer "btc_price"
-    t.integer "balance"
+    t.integer "btc_to_jpy_balance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "profits", force: :cascade do |t|
-    t.text "date"
+    t.text "created_on"
     t.integer "total_jpy_balance"
-    t.float "total_btc_balance"
-    t.integer "average_btc_price"
     t.integer "total_balance"
     t.integer "profit"
     t.float "profit_rate"
