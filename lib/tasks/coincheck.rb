@@ -61,7 +61,7 @@ class Coincheck
     ei.jpy_balance = jpy_balance
     ei.btc_balance = btc_balance
     ei.btc_price = btc_price
-    ei.btc_to_jpy_balance = (jpy_balance + btc_balance * btc_price).floor
+    ei.btc_to_jpy_balance = (btc_balance * btc_price).floor
     ei.save
   end
 end

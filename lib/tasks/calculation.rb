@@ -12,8 +12,8 @@ class Calculation
   end
 
   def select_exchange_information
-    today_data = ExchangeInformation.where("date = '#{@today}'")
-    yesterday_data = ExchangeInformation.where("date = '#{@yesterday}'")
+    today_data = ExchangeInformation.where("created_on = '#{@today}'")
+    yesterday_data = ExchangeInformation.where("created_on = '#{@yesterday}'")
     return today_data, yesterday_data
   end
 
@@ -21,7 +21,7 @@ class Calculation
     total_jpy_balance = today_data.sum(:jpy_balance)
     total_btc_to_jpy_balance = today_data.sum(:btc_to_jpy_balance)
     total_balance = total_jpy_balance + total_btc_to_jpy_balance
-    if yesterday_data
+    if yesterday_data.present?
       yesterday_total_jpy_balance = yesterday_data.sum(:jpy_balance)
       yesterday_total_btc_to_jpy_balance = yesterday_data.sum(:btc_to_jpy_balance)
       btc_difference = total_btc_to_jpy_balance - yesterday_total_btc_to_jpy_balance
