@@ -56,12 +56,12 @@ class Coincheck
 
   def insert_data_to_exchange_information(jpy_balance, btc_balance, btc_price)
     ei = ExchangeInformation.new
-    ei.date = @today
+    ei.created_on = @today
     ei.name = @name
     ei.jpy_balance = jpy_balance
     ei.btc_balance = btc_balance
     ei.btc_price = btc_price
-    ei.balance = (jpy_balance + btc_balance * btc_price).floor
+    ei.btc_to_jpy_balance = (jpy_balance + btc_balance * btc_price).floor
     ei.save
   end
 end

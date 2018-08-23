@@ -19,29 +19,23 @@ class Calculation
 
   def calculate_profit(today_data, yesterday_data)
     total_jpy_balance = today_data.sum(:jpy_balance)
-    total_btc_balance = today_data.sum(:btc_balance)
-    average_btc_price = today_data.average(:btc_price)
-    total_balance = total_jpy_balance + total_btc_balance * average_btc_price
+    total_btc_to_jpy_balance = today_data.sum(:btc_to_jpy_balance)
+    total_balance = total_jpy_balance + total_btc_to_jpy_balance
     if yesterday_data
       yesterday_total_jpy_balance = yesterday_data.sum(:jpy_balance)
-      yesterday_total_btc_balance = yesterday_data.sum(:btc_balance)
-      yesterday_average_btc_price = yesterday_data.average(:btc_price)
-      btc_difference = total_btc_balance * average_btc_price - yesterday_total_btc_balance * yesterday_average_btc_price
+      yesterday_total_btc_to_jpy_balance = yesterday_data.sum(:btc_to_jpy_balance)
+      btc_difference = total_btc_to_jpy_balance - yesterday_total_btc_to_jpy_balance
       profit = (total_jpy_balance - yesterday_total_jpy_balance + btc_difference).floor.to_f
-      profit_rate = (profit / total_jpy_balance * 100).truncate(3)
+      profit_rate = (profit / total_balance * 100).truncate(3)
     end
 
-    insert_data_to_profit(total_jpy_balance, total_btc_balance,
-                            average_btc_price, total_balance, profit, profit_rate)
+    insert_data_to_profit(total_jpy_balance, total_balance, profit, profit_rate)
   end
 
-  def insert_data_to_profit(total_jpy_balance, total_btc_balance,
-                              average_btc_price, total_balance, profit, profit_rate)
+  def insert_data_to_profit(total_jpy_balance, total_balance, profit, profit_rate)
     pr = Profit.new
-    pr.date = @today
+    pr.created_on = @today
     pr.total_jpy_balance = total_jpy_balance
-    pr.total_btc_balance = total_btc_balance
-    pr.average_btc_price = average_btc_price
     pr.total_balance = total_balance
     pr.profit = profit ||= 0
     pr.profit_rate = profit_rate ||= 0
