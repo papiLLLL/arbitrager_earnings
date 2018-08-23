@@ -22,7 +22,7 @@ class Calculation
     total_btc_balance = today_data.sum(:btc_balance)
     average_btc_price = today_data.average(:btc_price)
     total_balance = total_jpy_balance + total_btc_balance * average_btc_price
-    unless yesterday_data
+    if yesterday_data
       yesterday_total_jpy_balance = yesterday_data.sum(:jpy_balance)
       yesterday_total_btc_balance = yesterday_data.sum(:btc_balance)
       yesterday_average_btc_price = yesterday_data.average(:btc_price)
