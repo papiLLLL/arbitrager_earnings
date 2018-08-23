@@ -43,8 +43,8 @@ class Calculation
     pr.total_btc_balance = total_btc_balance
     pr.average_btc_price = average_btc_price
     pr.total_balance = total_balance
-    pr.profit = profit
-    pr.profit_rate = profit_rate
+    pr.profit = profit ||= 0
+    pr.profit_rate = profit_rate ||= 0
     pr.save
   end
 end
