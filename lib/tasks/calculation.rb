@@ -24,8 +24,9 @@ class Calculation
     if yesterday_data.present?
       yesterday_total_jpy_balance = yesterday_data.sum(:jpy_balance)
       yesterday_total_btc_to_jpy_balance = yesterday_data.sum(:btc_to_jpy_balance)
+      yesterday_total_balance = yesterday_total_jpy_balance + yesterday_total_btc_to_jpy_balance
       btc_difference = total_btc_to_jpy_balance - yesterday_total_btc_to_jpy_balance
-      profit = (total_jpy_balance - yesterday_total_jpy_balance + btc_difference).floor.to_f
+      profit = (total_balance - yesterday_total_balance - btc_difference).floor.to_f
       profit_rate = (profit / total_balance * 100).truncate(3)
     end
 
