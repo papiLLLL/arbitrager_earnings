@@ -1,5 +1,5 @@
 current directory: /mnt/d/person/atsushi/workspace/asana/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/nio4r-2.3.1/ext/nio4r
-/home/yuitoku/.rbenv/versions/2.5.0/bin/ruby -r ./siteconf20180811-5100-1x1jz7.rb extconf.rb
+/home/yuitoku/.rbenv/versions/2.5.0/bin/ruby -r ./siteconf20180826-19809-17si91t.rb extconf.rb
 checking for unistd.h... yes
 checking for sys/select.h... yes
 checking for port_event_t in poll.h... no
@@ -214,4 +214,4 @@ linking shared-object nio4r_ext.so
 
 current directory: /mnt/d/person/atsushi/workspace/asana/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/nio4r-2.3.1/ext/nio4r
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 nio4r_ext.so ./.gem.20180811-5100-her2jq
+/usr/bin/install -c -m 0755 nio4r_ext.so ./.gem.20180826-19809-oqk2fo

@@ -1,5 +1,5 @@
 current directory: /mnt/d/person/atsushi/workspace/asana/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/byebug-10.0.2/ext/byebug
-/home/yuitoku/.rbenv/versions/2.5.0/bin/ruby -r ./siteconf20180811-5584-yqikg5.rb extconf.rb
+/home/yuitoku/.rbenv/versions/2.5.0/bin/ruby -r ./siteconf20180826-19809-17g4n7q.rb extconf.rb
 creating Makefile
 
 current directory: /mnt/d/person/atsushi/workspace/asana/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/byebug-10.0.2/ext/byebug
@@ -16,4 +16,4 @@ linking shared-object byebug/byebug.so
 
 current directory: /mnt/d/person/atsushi/workspace/asana/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/byebug-10.0.2/ext/byebug
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 byebug.so ./.gem.20180811-5584-iz94w2/byebug
+/usr/bin/install -c -m 0755 byebug.so ./.gem.20180826-19809-n7na14/byebug

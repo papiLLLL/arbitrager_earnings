@@ -61,6 +61,7 @@ PATH: /mnt/c/Windows
 PATH: /mnt/c/Windows/System32/wbem
 PATH: /mnt/c/Windows/System32/WindowsPowerShell/v1.0
 PATH: /mnt/c/Windows/System32/OpenSSH
+PATH: /mnt/d/Microsoft VS Code/bin
 PATH: /mnt/d/Ruby24-x64/bin
 PATH: /mnt/c/Users/pattsuan/AppData/Local/Programs/Python/Python36-32/Scripts
 PATH: /mnt/c/Users/pattsuan/AppData/Local/Programs/Python/Python36-32

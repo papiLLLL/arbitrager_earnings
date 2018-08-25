@@ -1,5 +1,5 @@
 current directory: /mnt/d/person/atsushi/workspace/asana/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.8.4/ext/nokogiri
-/home/yuitoku/.rbenv/versions/2.5.0/bin/ruby -r ./siteconf20180811-5100-1fuizuj.rb extconf.rb --use-system-libraries
+/home/yuitoku/.rbenv/versions/2.5.0/bin/ruby -r ./siteconf20180826-19809-idhg09.rb extconf.rb --use-system-libraries
 checking if the C compiler accepts ... yes
 Building nokogiri using system libraries.
 checking for xmlParseDoc() in libxml/parser.h... yes
@@ -108,4 +108,4 @@ rm -rf /mnt/d/person/atsushi/workspace/asana/arbitrager_earnings/vendor/bundle/r
 
 current directory: /mnt/d/person/atsushi/workspace/asana/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.8.4/ext/nokogiri
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 nokogiri.so ./.gem.20180811-5100-uovjqi/nokogiri
+/usr/bin/install -c -m 0755 nokogiri.so ./.gem.20180826-19809-fnvd06/nokogiri
