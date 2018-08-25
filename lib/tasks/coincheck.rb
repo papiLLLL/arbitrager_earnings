@@ -16,8 +16,8 @@ class Coincheck
     puts "#{@name} start"
     btc_price = get_ticker
     jpy_balance, btc_balance = get_balance
-    insert_data_to_exchange_information(jpy_balance, btc_balance, btc_price)
     puts "#{@name} end"
+    return @name, jpy_balance, btc_balance, btc_price
   end
 
   def get_ticker
@@ -52,16 +52,5 @@ class Coincheck
       https.get(uri.request_uri, headers)
     }
     JSON.parse(response.body)
-  end
-
-  def insert_data_to_exchange_information(jpy_balance, btc_balance, btc_price)
-    ei = ExchangeInformation.new
-    ei.created_on = @today
-    ei.name = @name
-    ei.jpy_balance = jpy_balance
-    ei.btc_balance = btc_balance
-    ei.btc_price = btc_price
-    ei.btc_to_jpy_balance = (btc_balance * btc_price).floor
-    ei.save
   end
 end
