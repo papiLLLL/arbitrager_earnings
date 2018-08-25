@@ -17,8 +17,8 @@ class Quoinex
     puts "#{@name} start"
     btc_price = get_ticker
     jpy_balance, btc_balance = get_balance
-    insert_data_to_exchange_information(jpy_balance, btc_balance, btc_price)
     puts "#{@name} end "
+    return @name, jpy_balance, btc_balance, btc_price
   end
 
   def get_ticker
@@ -34,7 +34,7 @@ class Quoinex
     path = "/accounts/balance"
     signature = get_signature(path, @key, @secret)
     response = request_http(uri, path, signature)
-    return response[0]["balance"].to_i.floor, response[-1]["balance"].to_f.truncate(3)
+    extract_balance(response)
   end
 
   def get_signature(path, key, secret)
@@ -61,14 +61,13 @@ class Quoinex
     JSON.parse(response.body)
   end
 
-  def insert_data_to_exchange_information(jpy_balance, btc_balance, btc_price)
-    ei = ExchangeInformation.new
-    ei.date = @today
-    ei.name = @name
-    ei.jpy_balance = jpy_balance
-    ei.btc_balance = btc_balance
-    ei.btc_price = btc_price
-    ei.balance = (jpy_balance + btc_balance * btc_price).floor
-    ei.save
+  def extract_balance(response)
+    jpy_balance, btc_balance = nil
+    response.each do |hash|
+      jpy_balance = hash["balance"].to_i.floor if hash.has_value?("JPY")
+      btc_balance = hash["balance"].to_f.truncate(3) if hash.has_value?("BTC")
+    end
+  
+    return jpy_balance, btc_balance
   end
 end
