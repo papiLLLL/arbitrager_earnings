@@ -1,5 +1,5 @@
 current directory: /mnt/d/person/atsushi/workspace/asana/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/ffi-1.9.25/ext/ffi_c
-/home/yuitoku/.rbenv/versions/2.5.0/bin/ruby -r ./siteconf20180811-5584-1qr71oc.rb extconf.rb
+/home/yuitoku/.rbenv/versions/2.5.0/bin/ruby -r ./siteconf20180826-19809-1efgh6m.rb extconf.rb
 /home/yuitoku/.rbenv/versions/2.5.0/lib/ruby/2.5.0/mkmf.rb:1553: warning: Insecure world writable dir /mnt/c/ProgramData/Oracle/Java in PATH, mode 040777
 checking for ffi.h... no
 checking for ffi.h in /usr/local/include,/usr/include/ffi... no
@@ -158,4 +158,4 @@ compiling Types.c
 compiling Variadic.c
 compiling ffi.c
 linking shared-object ffi_c.so
-/usr/bin/install -c -m 0755 ffi_c.so ./.gem.20180811-5584-u72t6e
+/usr/bin/install -c -m 0755 ffi_c.so ./.gem.20180826-19809-vty2q
