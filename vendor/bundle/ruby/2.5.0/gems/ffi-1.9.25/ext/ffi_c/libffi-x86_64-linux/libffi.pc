@@ -1,7 +1,7 @@
 prefix=/usr/local
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
-toolexeclibdir=${exec_prefix}/lib/../lib
+toolexeclibdir=${exec_prefix}/lib/../lib64
 includedir=${prefix}/include
 
 Name: libffi

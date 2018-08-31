@@ -12,12 +12,12 @@ NULLCMD = :
 #### Start of system configuration section. ####
 
 srcdir = .
-topdir = /home/yuitoku/.rbenv/versions/2.5.0/include/ruby-2.5.0
+topdir = /home/ec2-user/.rbenv/versions/2.5.0/include/ruby-2.5.0
 hdrdir = $(topdir)
-arch_hdrdir = /home/yuitoku/.rbenv/versions/2.5.0/include/ruby-2.5.0/x86_64-linux
+arch_hdrdir = /home/ec2-user/.rbenv/versions/2.5.0/include/ruby-2.5.0/x86_64-linux
 PATH_SEPARATOR = :
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
-prefix = $(DESTDIR)/home/yuitoku/.rbenv/versions/2.5.0
+prefix = $(DESTDIR)/home/ec2-user/.rbenv/versions/2.5.0
 rubysitearchprefix = $(rubylibprefix)/$(sitearch)
 rubyarchprefix = $(rubylibprefix)/$(arch)
 rubylibprefix = $(libdir)/$(RUBY_BASE_NAME)
@@ -31,8 +31,8 @@ rubyhdrdir = $(includedir)/$(RUBY_VERSION_NAME)
 vendorarchdir = $(vendorlibdir)/$(sitearch)
 vendorlibdir = $(vendordir)/$(ruby_version)
 vendordir = $(rubylibprefix)/vendor_ruby
-sitearchdir = $(DESTDIR)./.gem.20180826-19809-fnvd06
-sitelibdir = $(DESTDIR)./.gem.20180826-19809-fnvd06
+sitearchdir = $(DESTDIR)./.gem.20180828-22252-eq4bp8
+sitelibdir = $(DESTDIR)./.gem.20180828-22252-eq4bp8
 sitedir = $(rubylibprefix)/site_ruby
 rubyarchdir = $(rubylibdir)/$(arch)
 rubylibdir = $(rubylibprefix)/$(ruby_version)
@@ -79,15 +79,15 @@ cflags   = $(optflags) $(debugflags) $(warnflags)
 cxxflags = $(optflags) $(debugflags) $(warnflags)
 optflags = -O3
 debugflags = -ggdb3
-warnflags = -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wno-maybe-uninitialized
+warnflags = -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format
 CCDLFLAGS = -fPIC
-CFLAGS   = $(CCDLFLAGS) $(cflags)  -g -DXP_UNIX -O3 -Wall -Wcast-qual -Wwrite-strings -Wextra -Wmissing-noreturn -Winline    $(ARCH_FLAG)
-INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir) -I/usr/include/libxml2 -I/usr/include/libxml2 -I/usr/include/libxml2
+CFLAGS   = $(CCDLFLAGS) $(cflags)  -g -DXP_UNIX -O3 -Wall -Wcast-qual -Wwrite-strings -Wextra -Wmissing-noreturn -Winline -DNOKOGIRI_USE_PACKAGED_LIBRARIES $(ARCH_FLAG)
+INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = 
-CPPFLAGS = -DHAVE_XMLPARSEDOC -DHAVE_XSLTPARSESTYLESHEETDOC -DHAVE_EXSLTFUNCREGISTER -DHAVE_XMLHASFEATURE -DHAVE_XMLFIRSTELEMENTCHILD -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETPARSERSTRUCTUREDERRORS -I/home/yuitoku/.rbenv/versions/2.5.0/include  $(DEFS) $(cppflags)
-CXXFLAGS = $(CCDLFLAGS) $(cxxflags)    $(ARCH_FLAG)
-ldflags  = -L. -L/home/yuitoku/.rbenv/versions/2.5.0/lib  -fstack-protector -rdynamic -Wl,-export-dynamic   
-dldflags = -L/home/yuitoku/.rbenv/versions/2.5.0/lib  -Wl,--compress-debug-sections=zlib 
+CPPFLAGS = -DHAVE_XMLPARSEDOC -DHAVE_XSLTPARSESTYLESHEETDOC -DHAVE_EXSLTFUNCREGISTER -DHAVE_XMLHASFEATURE -DHAVE_XMLFIRSTELEMENTCHILD -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETPARSERSTRUCTUREDERRORS -I/home/ec2-user/rails/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.8.4/ports/x86_64-pc-linux-gnu/libxslt/1.1.32/include -I/home/ec2-user/rails/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.8.4/ports/x86_64-pc-linux-gnu/libxml2/2.9.8/include/libxml2 -I/home/ec2-user/rails/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.8.4/ports/x86_64-pc-linux-gnu/libxml2/2.9.8/include/libxml2 -I/home/ec2-user/.rbenv/versions/2.5.0/include  $(DEFS) $(cppflags) "-DNOKOGIRI_LIBXML2_PATH=\"/home/ec2-user/rails/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.8.4/ports/x86_64-pc-linux-gnu/libxml2/2.9.8\"" "-DNOKOGIRI_LIBXML2_PATCHES=\"0001-Revert-Do-not-URI-escape-in-server-side-includes.patch\"" "-DNOKOGIRI_LIBXSLT_PATH=\"/home/ec2-user/rails/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.8.4/ports/x86_64-pc-linux-gnu/libxslt/1.1.32\"" "-DNOKOGIRI_LIBXSLT_PATCHES=\"\""
+CXXFLAGS = $(CCDLFLAGS) $(cxxflags) $(ARCH_FLAG)
+ldflags  = -L. -L/home/ec2-user/.rbenv/versions/2.5.0/lib  -fstack-protector -rdynamic -Wl,-export-dynamic
+dldflags = -L/home/ec2-user/.rbenv/versions/2.5.0/lib  
 ARCH_FLAG = 
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
 LDSHARED = $(CC) -shared
@@ -122,8 +122,8 @@ TOUCH = exit >
 #### End of system configuration section. ####
 
 preload = 
-libpath = . $(libdir)
-LIBPATH =  -L. -L$(libdir) -Wl,-rpath,$(libdir)
+libpath = . $(libdir) /home/ec2-user/rails/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.8.4/ports/x86_64-pc-linux-gnu/libxml2/2.9.8/lib /home/ec2-user/rails/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.8.4/ports/x86_64-pc-linux-gnu/libxslt/1.1.32/lib
+LIBPATH =  -L. -L$(libdir) -Wl,-rpath,$(libdir) -L/home/ec2-user/rails/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.8.4/ports/x86_64-pc-linux-gnu/libxml2/2.9.8/lib -Wl,-rpath,/home/ec2-user/rails/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.8.4/ports/x86_64-pc-linux-gnu/libxml2/2.9.8/lib -L/home/ec2-user/rails/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.8.4/ports/x86_64-pc-linux-gnu/libxslt/1.1.32/lib -Wl,-rpath,/home/ec2-user/rails/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.8.4/ports/x86_64-pc-linux-gnu/libxslt/1.1.32/lib
 DEFFILE = 
 
 CLEANFILES = mkmf.log
@@ -134,11 +134,11 @@ extout =
 extout_prefix = 
 target_prefix = /nokogiri
 LOCAL_LIBS = 
-LIBS =   -lxml2 -lxslt -lxml2 -lexslt -lxslt -lxml2 -lpthread -ldl -lcrypt -lm   -lc 
+LIBS =  /home/ec2-user/rails/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.8.4/ports/x86_64-pc-linux-gnu/libxslt/1.1.32/lib/libexslt.a -lm -ldl -lz /home/ec2-user/rails/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.8.4/ports/x86_64-pc-linux-gnu/libxml2/2.9.8/lib/libxml2.a /home/ec2-user/rails/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.8.4/ports/x86_64-pc-linux-gnu/libxslt/1.1.32/lib/libxslt.a -ldl -lm -lz /home/ec2-user/rails/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/nokogiri-1.8.4/ports/x86_64-pc-linux-gnu/libxml2/2.9.8/lib/libxml2.a -lpthread -ldl -lcrypt -lm   -lc 
 ORIG_SRCS = html_document.c html_element_description.c html_entity_lookup.c html_sax_parser_context.c html_sax_push_parser.c nokogiri.c xml_attr.c xml_attribute_decl.c xml_cdata.c xml_comment.c xml_document.c xml_document_fragment.c xml_dtd.c xml_element_content.c xml_element_decl.c xml_encoding_handler.c xml_entity_decl.c xml_entity_reference.c xml_io.c xml_libxml2_hacks.c xml_namespace.c xml_node.c xml_node_set.c xml_processing_instruction.c xml_reader.c xml_relax_ng.c xml_sax_parser.c xml_sax_parser_context.c xml_sax_push_parser.c xml_schema.c xml_syntax_error.c xml_text.c xml_xpath_context.c xslt_stylesheet.c
 SRCS = $(ORIG_SRCS) 
 OBJS = html_document.o html_element_description.o html_entity_lookup.o html_sax_parser_context.o html_sax_push_parser.o nokogiri.o xml_attr.o xml_attribute_decl.o xml_cdata.o xml_comment.o xml_document.o xml_document_fragment.o xml_dtd.o xml_element_content.o xml_element_decl.o xml_encoding_handler.o xml_entity_decl.o xml_entity_reference.o xml_io.o xml_libxml2_hacks.o xml_namespace.o xml_node.o xml_node_set.o xml_processing_instruction.o xml_reader.o xml_relax_ng.o xml_sax_parser.o xml_sax_parser_context.o xml_sax_push_parser.o xml_schema.o xml_syntax_error.o xml_text.o xml_xpath_context.o xslt_stylesheet.o
-HDRS = $(srcdir)/html_document.h $(srcdir)/html_element_description.h $(srcdir)/html_entity_lookup.h $(srcdir)/html_sax_parser_context.h $(srcdir)/html_sax_push_parser.h $(srcdir)/nokogiri.h $(srcdir)/xml_attr.h $(srcdir)/xml_attribute_decl.h $(srcdir)/xml_cdata.h $(srcdir)/xml_comment.h $(srcdir)/xml_document.h $(srcdir)/xml_document_fragment.h $(srcdir)/xml_dtd.h $(srcdir)/xml_element_content.h $(srcdir)/xml_element_decl.h $(srcdir)/xml_encoding_handler.h $(srcdir)/xml_entity_decl.h $(srcdir)/xml_entity_reference.h $(srcdir)/xml_io.h $(srcdir)/xml_libxml2_hacks.h $(srcdir)/xml_namespace.h $(srcdir)/xml_node.h $(srcdir)/xml_node_set.h $(srcdir)/xml_processing_instruction.h $(srcdir)/xml_reader.h $(srcdir)/xml_relax_ng.h $(srcdir)/xml_sax_parser.h $(srcdir)/xml_sax_parser_context.h $(srcdir)/xml_sax_push_parser.h $(srcdir)/xml_schema.h $(srcdir)/xml_syntax_error.h $(srcdir)/xml_text.h $(srcdir)/xml_xpath_context.h $(srcdir)/xslt_stylesheet.h
+HDRS = $(srcdir)/html_element_description.h $(srcdir)/html_sax_push_parser.h $(srcdir)/xml_dtd.h $(srcdir)/xml_comment.h $(srcdir)/xml_libxml2_hacks.h $(srcdir)/xml_reader.h $(srcdir)/xml_sax_parser.h $(srcdir)/xml_sax_parser_context.h $(srcdir)/xml_attr.h $(srcdir)/xml_attribute_decl.h $(srcdir)/xml_cdata.h $(srcdir)/xml_syntax_error.h $(srcdir)/xml_node.h $(srcdir)/xml_entity_reference.h $(srcdir)/nokogiri.h $(srcdir)/xml_node_set.h $(srcdir)/xml_document.h $(srcdir)/html_entity_lookup.h $(srcdir)/xml_processing_instruction.h $(srcdir)/xml_schema.h $(srcdir)/xml_io.h $(srcdir)/html_sax_parser_context.h $(srcdir)/html_document.h $(srcdir)/xml_namespace.h $(srcdir)/xml_element_decl.h $(srcdir)/xml_sax_push_parser.h $(srcdir)/xml_document_fragment.h $(srcdir)/xml_element_content.h $(srcdir)/xml_text.h $(srcdir)/xml_xpath_context.h $(srcdir)/xml_encoding_handler.h $(srcdir)/xml_entity_decl.h $(srcdir)/xslt_stylesheet.h $(srcdir)/xml_relax_ng.h
 LOCAL_HDRS = 
 TARGET = nokogiri
 TARGET_NAME = nokogiri
@@ -622,4 +622,4 @@ xslt_stylesheet.o: xslt_stylesheet.c xslt_stylesheet.h nokogiri.h	\
 all: clean-ports
 
 clean-ports: $(DLLIB)
-	-$(Q)$(RUBY) $(srcdir)/extconf.rb --clean --disable-static
+	-$(Q)$(RUBY) $(srcdir)/extconf.rb --clean --enable-static
