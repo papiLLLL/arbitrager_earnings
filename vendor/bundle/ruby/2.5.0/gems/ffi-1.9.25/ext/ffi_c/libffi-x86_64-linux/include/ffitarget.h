@@ -1,1 +1,1 @@
-/mnt/d/person/atsushi/workspace/asana/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src/x86/ffitarget.h
+/home/ec2-user/rails/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/ffi-1.9.25/ext/ffi_c/libffi/src/x86/ffitarget.h

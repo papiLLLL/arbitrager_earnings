@@ -3,10 +3,15 @@ require_relative "database_operation.rb"
 require_relative "coincheck.rb"
 require_relative "quoinex.rb"
 
-class Broker
+class Batches::Broker
   def initialize
     @exchange = %W(Coincheck Quoinex)
     @today_data = Array.new
+  end
+
+  def self.call
+    br = Batches::Broker.new
+    br.start
   end
 
   def start
@@ -39,6 +44,3 @@ class Broker
     dbo.insert_data_to_profit(total_jpy_balance, total_balance, profit, profit_rate)
   end
 end
-
-br = Broker.new
-br.start

@@ -12,12 +12,12 @@ NULLCMD = :
 #### Start of system configuration section. ####
 
 srcdir = .
-topdir = /home/yuitoku/.rbenv/versions/2.5.0/include/ruby-2.5.0
+topdir = /home/ec2-user/.rbenv/versions/2.5.0/include/ruby-2.5.0
 hdrdir = $(topdir)
-arch_hdrdir = /home/yuitoku/.rbenv/versions/2.5.0/include/ruby-2.5.0/x86_64-linux
+arch_hdrdir = /home/ec2-user/.rbenv/versions/2.5.0/include/ruby-2.5.0/x86_64-linux
 PATH_SEPARATOR = :
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
-prefix = $(DESTDIR)/home/yuitoku/.rbenv/versions/2.5.0
+prefix = $(DESTDIR)/home/ec2-user/.rbenv/versions/2.5.0
 rubysitearchprefix = $(rubylibprefix)/$(sitearch)
 rubyarchprefix = $(rubylibprefix)/$(arch)
 rubylibprefix = $(libdir)/$(RUBY_BASE_NAME)
@@ -31,8 +31,8 @@ rubyhdrdir = $(includedir)/$(RUBY_VERSION_NAME)
 vendorarchdir = $(vendorlibdir)/$(sitearch)
 vendorlibdir = $(vendordir)/$(ruby_version)
 vendordir = $(rubylibprefix)/vendor_ruby
-sitearchdir = $(DESTDIR)./.gem.20180826-19809-vty2q
-sitelibdir = $(DESTDIR)./.gem.20180826-19809-vty2q
+sitearchdir = $(DESTDIR)./.gem.20180828-22252-1plivv5
+sitelibdir = $(DESTDIR)./.gem.20180828-22252-1plivv5
 sitedir = $(rubylibprefix)/site_ruby
 rubyarchdir = $(rubylibdir)/$(arch)
 rubylibdir = $(rubylibprefix)/$(ruby_version)
@@ -84,10 +84,10 @@ CCDLFLAGS = -fPIC
 CFLAGS   = $(CCDLFLAGS) $(cflags) $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = 
-CPPFLAGS = -DRUBY_EXTCONF_H=\"$(RUBY_EXTCONF_H)\" -I/home/yuitoku/.rbenv/versions/2.5.0/include  $(DEFS) $(cppflags)
+CPPFLAGS = -DRUBY_EXTCONF_H=\"$(RUBY_EXTCONF_H)\" -I/home/ec2-user/.rbenv/versions/2.5.0/include  $(DEFS) $(cppflags)
 CXXFLAGS = $(CCDLFLAGS) $(cxxflags) $(ARCH_FLAG)
-ldflags  = -L. -L/home/yuitoku/.rbenv/versions/2.5.0/lib  -fstack-protector -rdynamic -Wl,-export-dynamic
-dldflags = -L/home/yuitoku/.rbenv/versions/2.5.0/lib  -Wl,--compress-debug-sections=zlib 
+ldflags  = -L. -L/home/ec2-user/.rbenv/versions/2.5.0/lib  -fstack-protector -rdynamic -Wl,-export-dynamic
+dldflags = -L/home/ec2-user/.rbenv/versions/2.5.0/lib  
 ARCH_FLAG = 
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
 LDSHARED = $(CC) -shared
@@ -138,7 +138,7 @@ LIBS =   -lpthread -ldl -lcrypt -lm   -lc
 ORIG_SRCS = AbstractMemory.c ArrayType.c Buffer.c Call.c ClosurePool.c DataConverter.c DynamicLibrary.c Function.c FunctionInfo.c LastError.c LongDouble.c MappedType.c MemoryPointer.c MethodHandle.c Platform.c Pointer.c Struct.c StructByReference.c StructByValue.c StructLayout.c Thread.c Type.c Types.c Variadic.c ffi.c
 SRCS = $(ORIG_SRCS) 
 OBJS = AbstractMemory.o ArrayType.o Buffer.o Call.o ClosurePool.o DataConverter.o DynamicLibrary.o Function.o FunctionInfo.o LastError.o LongDouble.o MappedType.o MemoryPointer.o MethodHandle.o Platform.o Pointer.o Struct.o StructByReference.o StructByValue.o StructLayout.o Thread.o Type.o Types.o Variadic.o ffi.o
-HDRS = $(srcdir)/AbstractMemory.h $(srcdir)/ArrayType.h $(srcdir)/Call.h $(srcdir)/ClosurePool.h $(srcdir)/compat.h $(srcdir)/DynamicLibrary.h $(srcdir)/extconf.h $(srcdir)/Function.h $(srcdir)/LastError.h $(srcdir)/LongDouble.h $(srcdir)/MappedType.h $(srcdir)/MemoryPointer.h $(srcdir)/MethodHandle.h $(srcdir)/Platform.h $(srcdir)/Pointer.h $(srcdir)/rbffi.h $(srcdir)/rbffi_endian.h $(srcdir)/Struct.h $(srcdir)/StructByReference.h $(srcdir)/StructByValue.h $(srcdir)/Thread.h $(srcdir)/Type.h $(srcdir)/Types.h
+HDRS = $(srcdir)/Thread.h $(srcdir)/MappedType.h $(srcdir)/StructByReference.h $(srcdir)/rbffi.h $(srcdir)/compat.h $(srcdir)/Function.h $(srcdir)/StructByValue.h $(srcdir)/ClosurePool.h $(srcdir)/extconf.h $(srcdir)/rbffi_endian.h $(srcdir)/Platform.h $(srcdir)/Pointer.h $(srcdir)/LongDouble.h $(srcdir)/Types.h $(srcdir)/MemoryPointer.h $(srcdir)/ArrayType.h $(srcdir)/MethodHandle.h $(srcdir)/Type.h $(srcdir)/Call.h $(srcdir)/AbstractMemory.h $(srcdir)/DynamicLibrary.h $(srcdir)/Struct.h $(srcdir)/LastError.h
 LOCAL_HDRS = 
 TARGET = ffi_c
 TARGET_NAME = ffi_c

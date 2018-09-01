@@ -12,12 +12,12 @@ NULLCMD = :
 #### Start of system configuration section. ####
 
 srcdir = .
-topdir = /home/yuitoku/.rbenv/versions/2.5.0/include/ruby-2.5.0
+topdir = /home/ec2-user/.rbenv/versions/2.5.0/include/ruby-2.5.0
 hdrdir = $(topdir)
-arch_hdrdir = /home/yuitoku/.rbenv/versions/2.5.0/include/ruby-2.5.0/x86_64-linux
+arch_hdrdir = /home/ec2-user/.rbenv/versions/2.5.0/include/ruby-2.5.0/x86_64-linux
 PATH_SEPARATOR = :
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
-prefix = $(DESTDIR)/home/yuitoku/.rbenv/versions/2.5.0
+prefix = $(DESTDIR)/home/ec2-user/.rbenv/versions/2.5.0
 rubysitearchprefix = $(rubylibprefix)/$(sitearch)
 rubyarchprefix = $(rubylibprefix)/$(arch)
 rubylibprefix = $(libdir)/$(RUBY_BASE_NAME)
@@ -31,8 +31,8 @@ rubyhdrdir = $(includedir)/$(RUBY_VERSION_NAME)
 vendorarchdir = $(vendorlibdir)/$(sitearch)
 vendorlibdir = $(vendordir)/$(ruby_version)
 vendordir = $(rubylibprefix)/vendor_ruby
-sitearchdir = $(DESTDIR)./.gem.20180826-19809-n7na14
-sitelibdir = $(DESTDIR)./.gem.20180826-19809-n7na14
+sitearchdir = $(DESTDIR)./.gem.20180828-22252-1epuu7e
+sitelibdir = $(DESTDIR)./.gem.20180828-22252-1epuu7e
 sitedir = $(rubylibprefix)/site_ruby
 rubyarchdir = $(rubylibdir)/$(arch)
 rubylibdir = $(rubylibprefix)/$(ruby_version)
@@ -79,15 +79,15 @@ cflags   = $(optflags) $(debugflags) $(warnflags)
 cxxflags = $(optflags) $(debugflags) $(warnflags)
 optflags = -O3
 debugflags = -ggdb3
-warnflags = -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wno-maybe-uninitialized
+warnflags = -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format
 CCDLFLAGS = -fPIC
 CFLAGS   = $(CCDLFLAGS) $(cflags) $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = 
-CPPFLAGS =  -I/home/yuitoku/.rbenv/versions/2.5.0/include  $(DEFS) $(cppflags)
+CPPFLAGS =  -I/home/ec2-user/.rbenv/versions/2.5.0/include  $(DEFS) $(cppflags)
 CXXFLAGS = $(CCDLFLAGS) $(cxxflags) $(ARCH_FLAG)
-ldflags  = -L. -L/home/yuitoku/.rbenv/versions/2.5.0/lib  -fstack-protector -rdynamic -Wl,-export-dynamic
-dldflags = -L/home/yuitoku/.rbenv/versions/2.5.0/lib  -Wl,--compress-debug-sections=zlib 
+ldflags  = -L. -L/home/ec2-user/.rbenv/versions/2.5.0/lib  -fstack-protector -rdynamic -Wl,-export-dynamic
+dldflags = -L/home/ec2-user/.rbenv/versions/2.5.0/lib  
 ARCH_FLAG = 
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
 LDSHARED = $(CC) -shared
