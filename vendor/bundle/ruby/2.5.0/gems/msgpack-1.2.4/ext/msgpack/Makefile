@@ -12,12 +12,12 @@ NULLCMD = :
 #### Start of system configuration section. ####
 
 srcdir = .
-topdir = /home/yuitoku/.rbenv/versions/2.5.0/include/ruby-2.5.0
+topdir = /home/ec2-user/.rbenv/versions/2.5.0/include/ruby-2.5.0
 hdrdir = $(topdir)
-arch_hdrdir = /home/yuitoku/.rbenv/versions/2.5.0/include/ruby-2.5.0/x86_64-linux
+arch_hdrdir = /home/ec2-user/.rbenv/versions/2.5.0/include/ruby-2.5.0/x86_64-linux
 PATH_SEPARATOR = :
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
-prefix = $(DESTDIR)/home/yuitoku/.rbenv/versions/2.5.0
+prefix = $(DESTDIR)/home/ec2-user/.rbenv/versions/2.5.0
 rubysitearchprefix = $(rubylibprefix)/$(sitearch)
 rubyarchprefix = $(rubylibprefix)/$(arch)
 rubylibprefix = $(libdir)/$(RUBY_BASE_NAME)
@@ -31,8 +31,8 @@ rubyhdrdir = $(includedir)/$(RUBY_VERSION_NAME)
 vendorarchdir = $(vendorlibdir)/$(sitearch)
 vendorlibdir = $(vendordir)/$(ruby_version)
 vendordir = $(rubylibprefix)/vendor_ruby
-sitearchdir = $(DESTDIR)./.gem.20180826-19809-6a009g
-sitelibdir = $(DESTDIR)./.gem.20180826-19809-6a009g
+sitearchdir = $(DESTDIR)./.gem.20180828-22252-1ntq7vn
+sitelibdir = $(DESTDIR)./.gem.20180828-22252-1ntq7vn
 sitedir = $(rubylibprefix)/site_ruby
 rubyarchdir = $(rubylibdir)/$(arch)
 rubylibdir = $(rubylibprefix)/$(ruby_version)
@@ -79,15 +79,15 @@ cflags   = $(optflags) $(debugflags) $(warnflags)
 cxxflags = $(optflags) $(debugflags) $(warnflags)
 optflags = -O3
 debugflags = -ggdb3
-warnflags = -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format -Wno-maybe-uninitialized
+warnflags = -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wno-tautological-compare -Wno-parentheses-equality -Wno-constant-logical-operand -Wno-self-assign -Wunused-variable -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -Wsuggest-attribute=noreturn -Wsuggest-attribute=format
 CCDLFLAGS = -fPIC
 CFLAGS   = $(CCDLFLAGS) $(cflags) -I.. -Wall -O3 -g -std=gnu99 $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = 
-CPPFLAGS = -DHAVE_RUBY_ST_H -DHAVE_ST_H -DHAVE_RB_STR_REPLACE -DHAVE_RB_INTERN_STR -DHAVE_RB_SYM2STR -DHAVE_RB_STR_INTERN -DHAVE_RB_BLOCK_LAMBDA -DHAVE_RB_HASH_DUP -DHAVE_RB_HASH_CLEAR -I/home/yuitoku/.rbenv/versions/2.5.0/include  $(DEFS) $(cppflags)
+CPPFLAGS = -DHAVE_RUBY_ST_H -DHAVE_ST_H -DHAVE_RB_STR_REPLACE -DHAVE_RB_INTERN_STR -DHAVE_RB_SYM2STR -DHAVE_RB_STR_INTERN -DHAVE_RB_BLOCK_LAMBDA -DHAVE_RB_HASH_DUP -DHAVE_RB_HASH_CLEAR -I/home/ec2-user/.rbenv/versions/2.5.0/include  $(DEFS) $(cppflags)
 CXXFLAGS = $(CCDLFLAGS) $(cxxflags) $(ARCH_FLAG)
-ldflags  = -L. -L/home/yuitoku/.rbenv/versions/2.5.0/lib  -fstack-protector -rdynamic -Wl,-export-dynamic
-dldflags = -L/home/yuitoku/.rbenv/versions/2.5.0/lib  -Wl,--compress-debug-sections=zlib 
+ldflags  = -L. -L/home/ec2-user/.rbenv/versions/2.5.0/lib  -fstack-protector -rdynamic -Wl,-export-dynamic
+dldflags = -L/home/ec2-user/.rbenv/versions/2.5.0/lib  
 ARCH_FLAG = 
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
 LDSHARED = $(CC) -shared
@@ -138,7 +138,7 @@ LIBS =   -lpthread -ldl -lcrypt -lm   -lc
 ORIG_SRCS = buffer.c buffer_class.c extension_value_class.c factory_class.c packer.c packer_class.c packer_ext_registry.c rbinit.c rmem.c unpacker.c unpacker_class.c unpacker_ext_registry.c
 SRCS = $(ORIG_SRCS) 
 OBJS = buffer.o buffer_class.o extension_value_class.o factory_class.o packer.o packer_class.o packer_ext_registry.o rbinit.o rmem.o unpacker.o unpacker_class.o unpacker_ext_registry.o
-HDRS = $(srcdir)/buffer.h $(srcdir)/buffer_class.h $(srcdir)/compat.h $(srcdir)/extension_value_class.h $(srcdir)/factory_class.h $(srcdir)/packer.h $(srcdir)/packer_class.h $(srcdir)/packer_ext_registry.h $(srcdir)/rmem.h $(srcdir)/sysdep.h $(srcdir)/sysdep_endian.h $(srcdir)/sysdep_types.h $(srcdir)/unpacker.h $(srcdir)/unpacker_class.h $(srcdir)/unpacker_ext_registry.h
+HDRS = $(srcdir)/packer_ext_registry.h $(srcdir)/buffer.h $(srcdir)/sysdep_types.h $(srcdir)/unpacker.h $(srcdir)/compat.h $(srcdir)/extension_value_class.h $(srcdir)/packer.h $(srcdir)/factory_class.h $(srcdir)/unpacker_class.h $(srcdir)/unpacker_ext_registry.h $(srcdir)/sysdep.h $(srcdir)/buffer_class.h $(srcdir)/sysdep_endian.h $(srcdir)/rmem.h $(srcdir)/packer_class.h
 LOCAL_HDRS = 
 TARGET = msgpack
 TARGET_NAME = msgpack

@@ -1,11 +1,11 @@
-current directory: /mnt/d/person/atsushi/workspace/asana/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/byebug-10.0.2/ext/byebug
-/home/yuitoku/.rbenv/versions/2.5.0/bin/ruby -r ./siteconf20180826-19809-17g4n7q.rb extconf.rb
+current directory: /home/ec2-user/rails/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/byebug-10.0.2/ext/byebug
+/home/ec2-user/.rbenv/versions/2.5.0/bin/ruby -r ./siteconf20180828-22252-6z35s5.rb extconf.rb
 creating Makefile
 
-current directory: /mnt/d/person/atsushi/workspace/asana/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/byebug-10.0.2/ext/byebug
+current directory: /home/ec2-user/rails/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/byebug-10.0.2/ext/byebug
 make "DESTDIR=" clean
 
-current directory: /mnt/d/person/atsushi/workspace/asana/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/byebug-10.0.2/ext/byebug
+current directory: /home/ec2-user/rails/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/byebug-10.0.2/ext/byebug
 make "DESTDIR="
 compiling breakpoint.c
 compiling byebug.c
@@ -14,6 +14,6 @@ compiling locker.c
 compiling threads.c
 linking shared-object byebug/byebug.so
 
-current directory: /mnt/d/person/atsushi/workspace/asana/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/byebug-10.0.2/ext/byebug
+current directory: /home/ec2-user/rails/arbitrager_earnings/vendor/bundle/ruby/2.5.0/gems/byebug-10.0.2/ext/byebug
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 byebug.so ./.gem.20180826-19809-n7na14/byebug
+/usr/bin/install -c -m 0755 byebug.so ./.gem.20180828-22252-1epuu7e/byebug
