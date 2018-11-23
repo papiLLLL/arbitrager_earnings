@@ -16,13 +16,16 @@ class Coincheck
     puts "#{@name} start"
     jpy_balance, btc_balance = get_balance
     btc_price = get_ticker
-    order_times, order_type = get_order
+    #order_times, order_type = get_order
     #order_market(order_type: "market_buy", market_buy_amount: 10875)
     puts "#{@name} end"
-    return @name, jpy_balance, btc_balance, btc_price, order_times, order_type
+    return @name, jpy_balance, btc_balance, btc_price
   end
 
   def check_order_argument(data)
+    # data[3] is bit price
+    # data[4] is order amount
+    # data[5] is order type
     if data[5] == "buy"
       order_market(order_type: "market_buy", market_buy_amount: data[3] * data[4])
     else

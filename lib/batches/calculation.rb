@@ -34,12 +34,12 @@ class Calculation
     return total_jpy_balance, total_balance, profit, profit_rate
   end
 
-  def confirm_difference_btc_amount(today_data, base_bit_amount,
-                                      order_price, order_times)
+  def confirm_difference_btc_amount(today_data, bit_base_amount)
     original_today_data = today_data
     today_data.each_with_index do |data, index|
-      unless bit_amount == data[2]
-        calclation_data = (bit_amount - data[2]).truncate(3)
+      # data[2] is bit balance
+      unless bit_base_amount == data[2]
+        calclation_data = (bit_base_amount * 1000 - data[2] * 1000) / 1000
         if calclation_data >= 0
           original_today_data[index].push(calclation_data, "buy")
         else
