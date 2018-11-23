@@ -23,16 +23,10 @@ class Quoinex
 
   def check_order_argument(data)
     # data[0] is exchange name
-    # data[3] is bit price
     # data[4] is order amount
     # data[5] is order type
     puts "Start check order argument in #{data[0]}"
-    if data[5] == "buy"
-      order_market(order_type: "market_buy", market_buy_amount: data[3] * data[4])
-    else
-      order_market(order_type: "market_sell", amount: data[4])
-    end
-
+    order_market(order_type: data[5], amount: data[4]) if data[5]
     puts "End check order argument in #{data[0]}"
   end
 
@@ -52,10 +46,18 @@ class Quoinex
     extract_balance(response)
   end
 
-  def order_market
+  def order_market(order_type: nil, amount: nil)
     uri = URI.parse(@base_url)
     path = "/orders/"
+    body = {
+      order_type: "market",
+      product_id: 5,
+      side: order_type,
+      quantity: amount,
+    }.to_json
     signature = get_signature(path, @key, @secret)
+    response = request_for_post(uri, path, signature, body)
+    p response
   end
 
   def get_signature(path, key, secret)
@@ -74,6 +76,15 @@ class Quoinex
     request.add_field("X-Quoine-API-Version", "2")
     request.add_field("X-Quoine-AUth", signature)
     request.add_field("Content-Type", "application/json")
+    request_http(uri, request)
+  end
+
+  def request_for_post(uri, path, signature, body = "")
+    request = Net::HTTP::Post.new(path)
+    request.add_field("X-Quoine-API-Version", "2")
+    request.add_field("X-Quoine-AUth", signature)
+    request.add_field("Content-Type", "application/json")
+    request.body = body
     request_http(uri, request)
   end
 

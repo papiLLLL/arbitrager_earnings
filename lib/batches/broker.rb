@@ -6,9 +6,8 @@ require_relative "quoinex.rb"
 class Batches::Broker
   def initialize
     @exchange = %W(Coincheck Quoinex)
-    @exchange = %W(Quoinex)
     @today_data = Array.new
-    @bit_base_amount = 0.205
+    @bit_base_amount = 0.206
   end
 
   def self.call
@@ -20,7 +19,7 @@ class Batches::Broker
     puts "broker start"
     start_exchange_api
     p @today_data
-    #adjust_balance
+    adjust_balance
     #start_database_operation
     puts "broker end"
   end

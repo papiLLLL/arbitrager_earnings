@@ -40,6 +40,7 @@ class Calculation
       # data[2] is bit balance
       unless bit_base_amount == data[2]
         calclation_data = (bit_base_amount * 1000 - data[2] * 1000) / 1000
+        return if calclation_data <= 0.05
         if calclation_data >= 0
           original_today_data[index].push(calclation_data, "buy")
         else

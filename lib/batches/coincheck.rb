@@ -26,6 +26,7 @@ class Coincheck
     # data[4] is order amount
     # data[5] is order type
     puts "Start check order argument in #{data[0]}"
+    return unless data[5]
     if data[5] == "buy"
       order_market(order_type: "market_buy", market_buy_amount: data[3] * data[4])
     else
@@ -56,9 +57,9 @@ class Coincheck
       amount: amount,
       order_type: order_type,
       pair: "btc_jpy"
-    }
-    headers = get_signature(uri, @key, @secret, body.to_json)
-    response = request_for_post(uri, headers, body.to_json)
+    }.to_json
+    headers = get_signature(uri, @key, @secret, body)
+    response = request_for_post(uri, headers, body)
     puts response
   end
 
