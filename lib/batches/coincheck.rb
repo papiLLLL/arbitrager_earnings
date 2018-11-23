@@ -16,21 +16,23 @@ class Coincheck
     puts "#{@name} start"
     jpy_balance, btc_balance = get_balance
     btc_price = get_ticker
-    #order_times, order_type = get_order
-    #order_market(order_type: "market_buy", market_buy_amount: 10875)
     puts "#{@name} end"
     return @name, jpy_balance, btc_balance, btc_price
   end
 
   def check_order_argument(data)
+    # data[0] is exchange name
     # data[3] is bit price
     # data[4] is order amount
     # data[5] is order type
+    puts "Start check order argument in #{data[0]}"
     if data[5] == "buy"
       order_market(order_type: "market_buy", market_buy_amount: data[3] * data[4])
     else
       order_market(order_type: "market_sell", amount: data[4])
     end
+
+    puts "End check order argument in #{data[0]}"
   end
 
   def get_ticker
@@ -45,17 +47,6 @@ class Coincheck
     headers = get_signature(uri, @key, @secret)
     response = request_for_get(uri, headers)
     return response["jpy"].to_i.floor, response["btc"].to_f.truncate(3)
-  end
-
-  def get_order
-    uri = URI.parse(@base_url + "/api/exchange/orders/opens")
-    headers = get_signature(uri, @key, @secret)
-    response = request_for_get(uri, headers)
-    if response["orders"].length == 0
-      response["orders"].length
-    else
-      return response["orders"].length, response["orders"][0]["order_type"]
-    end
   end
 
   def order_market(order_type: nil, market_buy_amount: nil, amount: nil)

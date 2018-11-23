@@ -21,11 +21,26 @@ class Quoinex
     return @name, jpy_balance, btc_balance, btc_price
   end
 
+  def check_order_argument(data)
+    # data[0] is exchange name
+    # data[3] is bit price
+    # data[4] is order amount
+    # data[5] is order type
+    puts "Start check order argument in #{data[0]}"
+    if data[5] == "buy"
+      order_market(order_type: "market_buy", market_buy_amount: data[3] * data[4])
+    else
+      order_market(order_type: "market_sell", amount: data[4])
+    end
+
+    puts "End check order argument in #{data[0]}"
+  end
+
   def get_ticker
     uri = URI.parse(@base_url)
     path = "/products/5"
     signature = get_signature(path, @key, @secret)
-    response = request_http(uri, path, signature)
+    response = request_for_get(uri, path, signature)
     response["last_traded_price"].to_i.floor
   end
 
@@ -33,8 +48,14 @@ class Quoinex
     uri = URI.parse(@base_url)
     path = "/accounts/balance"
     signature = get_signature(path, @key, @secret)
-    response = request_http(uri, path, signature)
+    response = request_for_get(uri, path, signature)
     extract_balance(response)
+  end
+
+  def order_market
+    uri = URI.parse(@base_url)
+    path = "/orders/"
+    signature = get_signature(path, @key, @secret)
   end
 
   def get_signature(path, key, secret)
@@ -48,15 +69,17 @@ class Quoinex
     JWT.encode(auth_payload, secret, "HS256")
   end
 
-  def request_http(uri, path, signature)
-    https = Net::HTTP.new(uri.host, uri.port)
-    https.use_ssl = true
-
+  def request_for_get(uri, path, signature)
     request = Net::HTTP::Get.new(path)
     request.add_field("X-Quoine-API-Version", "2")
     request.add_field("X-Quoine-AUth", signature)
     request.add_field("Content-Type", "application/json")
+    request_http(uri, request)
+  end
 
+  def request_http(uri, request)
+    https = Net::HTTP.new(uri.host, uri.port)
+    https.use_ssl = true
     response = https.request(request)
     JSON.parse(response.body)
   end
