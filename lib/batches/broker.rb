@@ -7,6 +7,7 @@ class Batches::Broker
   def initialize
     @exchange = %W(Coincheck Quoinex)
     @today_data = Array.new
+    @bit_base_amount = 0.206
   end
 
   def self.call
@@ -17,7 +18,9 @@ class Batches::Broker
   def start
     puts "broker start"
     start_exchange_api
-    start_database_operation
+    p @today_data
+    adjust_balance
+    #start_database_operation
     puts "broker end"
   end
 
@@ -32,9 +35,18 @@ class Batches::Broker
     threads.each { |t| t.join }
   end
 
-  def start_calculation
+  def adjust_balance
     calc = Calculation.new
-    calc.start
+    order_data = calc.confirm_difference_btc_amount(@today_data, 
+                                                          @bit_base_amount)
+    threads = []
+    order_data.each do |data|
+      threads << Thread.new do
+        Object.const_get(data[0]).new.check_order_argument(data)
+      end
+    end
+
+    threads.each { |t| t.join }
   end
 
   def start_database_operation
@@ -42,5 +54,10 @@ class Batches::Broker
     dbo.insert_data_to_exchange_information(@today_data)
     total_jpy_balance, total_balance, profit, profit_rate = start_calculation
     dbo.insert_data_to_profit(total_jpy_balance, total_balance, profit, profit_rate)
+  end
+
+  def start_calculation
+    calc = Calculation.new
+    calc.start
   end
 end
