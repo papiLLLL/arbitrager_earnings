@@ -21,7 +21,8 @@
 
 require File.expand_path(File.dirname(__FILE__) + "/environment")
 
-set :environment, ENV["RAILS_ENV"]
+rails_env = :development
+set :environment, rails_env
 set :output, "#{Rails.root}/log/cron.log"
 
 every 1.day, at: "3:00 am" do
