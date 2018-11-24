@@ -15,12 +15,19 @@ class Batches::Broker
     br.start
   end
 
+  def self.confirm_balance
+    br = Batches::Broker.new
+    puts "Begin confirm_balance"
+    start_exchange_apio
+    adjust_balance
+    puts "End confirm_balance"
+  end
+
   def start
     puts "broker start"
     start_exchange_api
-    p @today_data
     adjust_balance
-    #start_database_operation
+    start_database_operation
     puts "broker end"
   end
 
