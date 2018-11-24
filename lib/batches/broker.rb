@@ -19,7 +19,7 @@ class Batches::Broker
     puts "broker start"
     start_exchange_api
     p @today_data
-    adjust_balance
+    #adjust_balance
     #start_database_operation
     puts "broker end"
   end

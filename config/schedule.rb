@@ -19,15 +19,9 @@
 
 # Learn more: http://github.com/javan/whenever
 
-require File.expand_path(File.dirname(__FILE__) + "/environment")
-rails_env = ENV["RAILS_ENV"] || :development
-
-set :environment, rails_env
+set :environment, ENV["RAILS_ENV"]
 set :output, "#{Rails.root}/log/cron.log"
 
-env :PATH, ENV["PATH"]
-job_type :rbenv_runner, %q!eval "$(rbenv init -)"; cd :path && bin/rails runner -e :environment ':task' :output!
-
-every 1.day, :at => "03:00 am" do
-  rbenv_runner "Batches::Broker.call"
+every 1.day, at: ["03:00 am", "09:00 am", "03:00 pm", "09:00 pm"] do
+  runner "Batches::Broker.call"
 end
