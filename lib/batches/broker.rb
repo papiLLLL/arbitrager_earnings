@@ -51,6 +51,8 @@ class Batches::Broker
     calc = Calculation.new
     order_data = calc.confirm_difference_btc_amount(@today_data, 
                                                           @bit_base_amount)
+    # exchange value length
+    return unless order_data[0].length == order_data[1].length
     threads = []
     order_data.each do |data|
       threads << Thread.new do
