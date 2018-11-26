@@ -12,6 +12,7 @@ class EarningsController < ApplicationController
     @quoinex_btc_price = ei.where("name = 'Quoinex'").pluck(:btc_price)
 
     @total_balance = pr.pluck(:total_balance)
+    gon.total_balance = @total_balance
     @profit = pr.pluck(:profit)
     @profit_rate = pr.pluck(:profit_rate)
   end
