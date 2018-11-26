@@ -1,86 +1,42 @@
-<div class="chart-container" style="position: relative; width: 50vw; height: 15vh; margin: 0 auto;">
-  <canvas id="jpy_balance"></canvas>
-  <canvas id="btc_balance"></canvas>
-  <canvas id="btc_price"></canvas>
-  <canvas id="profit"></canvas>
-  <canvas id="profit_rate"></canvas>
+<div class="grid_container">
+  <header class="grid_item_nav">
+    <nav class="flex_container">
+      <div>
+        <p>humberger icon</p>
+      </div>
+      <ul class="flex_container">
+        <li><p>mail icon</p></li>
+        <li><p>user icon</p></li>
+      </ul>
+    </nav>
+  </header>
+
+  <article class="grid_item_sidebar">
+    <p>title</p>
+    <p>home</p>
+  </article>
+
+  <article class="grid_item_list">
+    <div class="flex_container">
+      <section>
+        <span>icon. Total JPY Blance</span>
+        <p onclick="showMsg()">100</p>
+        <span>icon. from last week</span>
+      </section>
+      <section>
+        <span>icon. Total JPY Blance</span>
+        <p>100</p>
+        <span>icon. from last week</span>
+      </section>
+      <section>
+        <span>icon. Total JPY Blance</span>
+        <p>100</p>
+        <span>icon. from last week</span>
+      </section>
+    </div>
+  </article>
+
+  <article class="grid_item_graph">
+    <canvas id="jpy_balance"></canvas>
+  </article>
 </div>
-<script>
-  const ctx1 = document.getElementById("jpy_balance").getContext("2d");
-  const jpy_balance = new Chart(ctx1, {
-    type: "line",
-    data: {
-      labels: <%= @created_on.to_json.html_safe %>,
-      datasets: [{
-        label: "JPY残高",
-        data: <%= @total_balance %>,
-        borderColor: "rgba(255, 50, 132, 1.0)",
-        fill: false,
-      }]
-    },
-  });
-</script>
-
-<script>
-  const ctx2 = document.getElementById("btc_balance").getContext("2d");
-  const btc_balance = new Chart(ctx2, {
-    type: "line",
-    data: {
-      labels: <%= @created_on.to_json.html_safe %>,
-      datasets: [{
-        label: "BTC残高",
-        data: <%= @coincheck_btc_balance %>,
-        borderColor: "rgba(255, 50, 132, 1.0)",
-        fill: false,
-      }]
-    },
-  });
-</script>
-
-<script>
-  const ctx3 = document.getElementById("btc_price").getContext("2d");
-  const btc_price = new Chart(ctx3, {
-    type: "line",
-    data: {
-      labels: <%= @created_on.to_json.html_safe %>,
-      datasets: [{
-        label: "BTC価格",
-        data: <%= @coincheck_btc_price %>,
-        borderColor: "rgba(255, 50, 132, 1.0)",
-        fill: false,
-      }]
-    },
-  });
-</script>
-
-<script>
-  const ctx4 = document.getElementById("profit").getContext("2d");
-  const profit = new Chart(ctx4, {
-    type: "line",
-    data: {
-      labels: <%= @created_on.to_json.html_safe %>,
-      datasets: [{
-        label: "利益",
-        data: <%= @profit %>,
-        borderColor: "rgba(255, 50, 132, 1.0)",
-        fill: false,
-      }]
-    },
-  });
-</script>
-
-<script>
-  const ctx5 = document.getElementById("profit_rate").getContext("2d");
-  const profit_rate = new Chart(ctx5, {
-    type: "line",
-    data: {
-      labels: <%= @created_on.to_json.html_safe %>,
-      datasets: [{
-        label: "利益率",
-        data: <%= @profit_rate %>,
-        borderColor: "rgba(255, 50, 132, 1.0)",
-        fill: false,
-      }]
-    },
-  });
-</script>

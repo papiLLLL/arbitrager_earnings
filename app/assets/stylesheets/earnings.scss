@@ -1,3 +1,45 @@
 // Place all the styles related to the earnings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.grid_container {
+  display: grid;
+  grid-template-rows: 70px 1fr;
+  grid-template-columns: 210px 1fr;
+}
+.grid_item_sidebar {
+  grid-row: 1 / 4;
+  grid-column: 1 / 2;
+  background: #123456;
+}
+
+.grid_item_nav {
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+  background: #987654;
+}
+
+.grid_item_list {
+  grid-row: 2 /3 ;
+  grid-column: 2 /3 ;
+  background: #FEDCBA;
+}
+
+.grid_item_list section{
+  border-left: 1px solid #566;
+}
+
+.grid_item_graph {
+  grid-row: 3 / 4;
+  grid-column: 2 / 3;
+  background: #ECA345;
+}
+
+.flex_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+ul {
+  list-style: none;
+}
