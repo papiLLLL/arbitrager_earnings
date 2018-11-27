@@ -4,6 +4,7 @@ class EarningsController < ApplicationController
     pr = Profit.all
 
     @created_on = ei.pluck(:created_on).uniq
+    gon.created_on = @created_on
     @coincheck_jpy_balance = ei.where("name = 'Coincheck'").pluck(:jpy_balance)
     @coincheck_btc_balance = ei.where("name = 'Coincheck'").pluck(:btc_balance)
     @coincheck_btc_price = ei.where("name = 'Coincheck'").pluck(:btc_price)
