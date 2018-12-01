@@ -5,12 +5,39 @@ document.addEventListener('DOMContentLoaded', function(event) {
     data: {
       labels: gon.created_on,
       datasets: [{
-        label: "JPY残高",
         data: gon.total_balance,
         borderColor: "rgba(255, 50, 132, 1.0)",
         fill: false,
       }]
     },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      legend: {
+        display: false
+      }
+    }
   });
+/*
+  const ctx2 = document.getElementById("btc_price").getContext("2d");
+  const btc_price = new Chart(ctx2, {
+    type: "line",
+    data: {
+      labels: gon.created_on,
+      datasets: [{
+        data: gon.coincheck_btc_price,
+        borderColor: "rgba(255, 50, 132, 1.0)",
+        fill: false,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      legend: {
+        display: false
+      }
+    }
+  });
+*/
 }); 
 
