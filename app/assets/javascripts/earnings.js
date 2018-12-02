@@ -6,27 +6,27 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
   const ctx1 = document.getElementById("jpy_balance").getContext("2d");
   const jpy_balance = new Chart(ctx1, {
-    type: "line",
+    type: "bar",
     data: {
       labels: gon.created_on,
       datasets: [{
-        data: gon.total_balance,
-        borderColor: "#CCB3DD",
-        pointBackgroundColor: "#CCB3DD",
-        yAxisID: "total",
-        fill: false
-      }, {
+        type: "line",
         data: gon.coincheck_jpy_balance,
         borderColor: "#91DBB9",
         pointBackgroundColor: "#91DBB9",
         yAxisID: "each",
         fill: false
       }, {
+        type: "line",
         data: gon.quoinex_jpy_balance,
         borderColor: "#97D3E3",
         pointBackgroundColor: "#97D3E3",
         yAxisID: "each",
         fill: false
+      }, {
+        data: gon.total_balance,
+        backgroundColor: "#F2F5AA",
+        yAxisID: "total",
       }]
     },
     options: {
@@ -41,18 +41,18 @@ document.addEventListener('DOMContentLoaded', function(event) {
           type: "linear",
           position: "left",
           ticks: {
-            max: 255000,
-            min: 225000,
-            stepSize: 5000,
+            max: 350000,
+            min: 230000,
+            stepSize: 10000,
           }
         }, {
           id: "total",
           type: "linear",
           position: "right",
           ticks: {
-            max: 770000,
-            min: 730000,
-            stepSize: 10000,
+            max: 1000000,
+            min: 700000,
+            stepSize: 100000,
           },
           gridLines: {
             drawOnChartArea: false,
