@@ -27,7 +27,8 @@
       <section class="list_style">
         <span><i class="fas fa-yen-sign"></i> Total Balance</span>
         <p class="value"><%= @total_balance %></p>
-        <span>icon. from last day</span>
+        <span><%= @total_balance_difference %>(<%= @total_balance_ratio %>%)</span>
+        <p class="item_description">from last day</p>
       </section>
       <section class="list_style">
         <span><i class="fab fa-btc"></i> BTC Holdings</span>
@@ -37,22 +38,26 @@
       <section class="list_style">
         <span><i class="fas fa-yen-sign"></i> Profit(last day)</span>
         <p class="value"><%= @profit %></p>
-        <span>icon. from last day</span>
+        <span><%= @profit_difference %>(<%= @profit_ratio %>%)</span>
+        <p class="item_description">from last day</p>
       </section>
       <section class="list_style">
         <span><i class="fas fa-yen-sign"></i> Profit(30 days)</span>
-        <p class="value">30000</p>
-        <span>icon. from 30 days</span>
+        <p class="value"><%= @profit_thirty_days %></p>
+        <span><%= @profit_thirty_days_difference %>(<%= @profit_thirty_days_ratio %>%)</span>
+        <p class="item_description">from 30 days</p>
       </section>
       <section class="list_style">
         <span><i class="fas fa-percent"></i> Profit rate(last day)</span>
         <p class="value"><%= @profit_rate %></p>
-        <span>icon. from last day</span>
+        <span><%= @profit_rate_difference %>(<%= @profit_rate_ratio %>%)</span>
+        <p class="item_description">from last day</p>
       </section>
       <section class="list_style">
         <span><i class="fas fa-percent"></i> Profit rate(30 days)</span>
-        <p class="value">1.25</p>
-        <span>icon. from 30 days</span>
+        <p class="value"><%= @profit_rate_thirty_days %></p>
+        <span><%= @profit_rate_thirty_days_difference %>(<%= @profit_rate_thirty_days_ratio %>%)</span>
+        <p class="item_description">from 30 days</p>
       </section>
     </div>
   </article>
