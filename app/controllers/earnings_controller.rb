@@ -19,8 +19,8 @@ class EarningsController < ApplicationController
     @profit_rate_thirty_days,
     @profit_rate_thirty_days_difference,
     @profit_rate_thirty_days_ratio = calculate_item(
-                                      pr.where(created_at: sixty_days_ago...thirty_days_ago).sum(:profit_rate),
-                                      pr.where(created_at: thirty_days_ago...today).sum(:profit_rate))
+                                      (pr.where(created_at: sixty_days_ago...thirty_days_ago).sum(:profit_rate)).round(3),
+                                      (pr.where(created_at: thirty_days_ago...today).sum(:profit_rate)).round(3))
 
     gon.created_on = ei.pluck(:created_on).uniq
     gon.coincheck_jpy_balance = ei.where("name = 'Coincheck'").pluck(:jpy_balance)
