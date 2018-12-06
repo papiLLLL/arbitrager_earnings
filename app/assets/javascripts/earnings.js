@@ -1,8 +1,15 @@
-document.addEventListener('DOMContentLoaded', function(event) {
-  /* Chart.js setting */
-  Chart.defaults.global.defaultFontColor = "#73879C";
-  Chart.defaults.global.defaultFontFamily = "Quicksand, '游ゴシック Medium', 'Yu Gothic Medium', 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif";
+/* Chart.js setting */
+Chart.defaults.global.defaultFontColor = "#73879C";
+Chart.defaults.global.defaultFontFamily = "Quicksand, '游ゴシック Medium', 'Yu Gothic Medium', 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif";
 
+/* graph color */
+const coincheck_color = "#91DBB9";
+const quoinex_color = "#97D3E3";
+const total_color = "#F2F5AA";
+const profit_color = "#EAA8BF";
+const profit_rate_color = "#DFECAA";
+
+document.addEventListener('DOMContentLoaded', function(event) {
   const ctx1 = document.getElementById("jpy_balance").getContext("2d");
   const jpy_balance = new Chart(ctx1, {
     type: "bar",
@@ -12,24 +19,24 @@ document.addEventListener('DOMContentLoaded', function(event) {
         type: "line",
         label: "Coincheck",
         data: gon.coincheck_jpy_balance,
-        borderColor: "#91DBB9",
-        backgroundColor: "#91DBB9",
-        pointBackgroundColor: "#91DBB9",
+        borderColor: coincheck_color,
+        backgroundColor: coincheck_color,
+        pointBackgroundColor: coincheck_color,
         yAxisID: "left",
         fill: false
       }, {
         type: "line",
         label: "Quoinex",
         data: gon.quoinex_jpy_balance,
-        borderColor: "#97D3E3",
-        backgroundColor: "#97D3E3",
-        pointBackgroundColor: "#97D3E3",
+        borderColor: quoinex_color,
+        backgroundColor: quoinex_color,
+        pointBackgroundColor: quoinex_color,
         yAxisID: "left",
         fill: false
       }, {
         label: "Total",
         data: gon.total_balance,
-        backgroundColor: "#F2F5AA",
+        backgroundColor: total_color,
         yAxisID: "right",
       }]
     },
@@ -74,17 +81,17 @@ document.addEventListener('DOMContentLoaded', function(event) {
       datasets: [{
         label: "profit",
         data: gon.profit,
-        borderColor: "#EAA8BF",
-        backgroundColor: "#EAA8BF",
-        pointBackgroundColor: "#EAA8BF",
+        borderColor: profit_color,
+        backgroundColor: profit_color,
+        pointBackgroundColor: profit_color,
         yAxisID: "left",
         fill: false
       }, {
         label: "profit_rate",
         data: gon.profit_rate,
-        borderColor: "#DFECAA",
-        backgroundColor: "#DFECAA",
-        pointBackgroundColor: "#DFECAA",
+        borderColor: profit_rate_color,
+        backgroundColor: profit_rate_color,
+        pointBackgroundColor: profit_rate_color,
         yAxisID: "right",
         fill: false
       }]
