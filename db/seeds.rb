@@ -9,12 +9,16 @@
 coin = 230000
 quoin = 240000
 total = 700000
+profit = 1000
+profit_rate = 0.1
 (1..30).each { |i|
   i += 1
   total += 5000
   coin += 1000
   quoin += 2000
-  Profit.create(created_on: "2018-01-#{i}", total_balance: "#{total}")
-  ExchangeInformation.create(created_on: "2018-01-#{i}", name: "Coincheck", jpy_balance: "#{coin}")
-  ExchangeInformation.create(created_on: "2018-01-#{i}", name: "Quoinex", jpy_balance: "#{quoin}")
+  profit += 75
+  profit_rate += 0.01
+  Profit.create(created_on: "2018-11-#{i}", total_balance: "#{total}", profit: "#{profit}", profit_rate: "#{profit_rate}")
+  ExchangeInformation.create(created_on: "2018-11-#{i}", name: "Coincheck", jpy_balance: "#{coin}")
+  ExchangeInformation.create(created_on: "2018-11-#{i}", name: "Quoinex", jpy_balance: "#{quoin}")
 }

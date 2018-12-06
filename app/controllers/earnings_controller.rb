@@ -26,6 +26,9 @@ class EarningsController < ApplicationController
     gon.coincheck_jpy_balance = ei.where("name = 'Coincheck'").pluck(:jpy_balance)
     gon.quoinex_jpy_balance = ei.where("name = 'Quoinex'").pluck(:jpy_balance)
     gon.total_balance = pr.pluck(:total_balance)
+
+    gon.profit = pr.pluck(:profit)
+    gon.profit_rate = pr.pluck(:profit_rate)
   end
 
   private
