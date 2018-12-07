@@ -23,7 +23,11 @@ class Batches::Broker
   def start
     puts "broker start"
     start_exchange_api
+    p @today_data
     adjust_balance
+    @today_data = Array.new
+    start_exchange_api
+    p @today_data
     start_database_operation
     puts "broker end"
   end
