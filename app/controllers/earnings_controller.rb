@@ -33,7 +33,8 @@ class EarningsController < ApplicationController
 
   private
 
-    def calculate_item(to, from)
+    def calculate_item(to = nil, from = nil)
+      return unless to && from
       difference = (from * 1000 - to * 1000) / 1000
       difference = difference.zero? ? "±0" : sprintf("%+g", difference)
       ratio = to.zero? ? "±0" : sprintf("%+g", ((from / to.to_f * 100) - 100).round)
