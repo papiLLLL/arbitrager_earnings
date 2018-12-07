@@ -26,7 +26,11 @@ class Coincheck
     # data[4] is order amount
     # data[5] is order type
     puts "Start check order argument in #{data[0]}"
+<<<<<<< HEAD
     return unless data[5] && data[4] > 0.005
+=======
+    return unless data[5] && data[4] >= 0.005
+>>>>>>> bdc2756b46f2adc3ae2e8953a143c3d14e036fc8
     # Nonce must be incremented measure.
     # Cause is continuous access, therefore sleep 1sec.
     sleep 1

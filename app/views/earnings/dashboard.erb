@@ -1,0 +1,93 @@
+<div class="grid_container">
+  <header class="grid_item_header">
+    <nav class="flex_container_between">
+      <div class="nav_style">
+        <p><i class="fas fa-bars fa-2x"></i></p>
+      </div>
+      <ul class="flex_container_between nav_style">
+        <li><span class="far fa-envelope fa-2x"></span></li>
+        <li><span>user icon</span></li>
+      </ul>
+    </nav>
+  </header>
+
+  <article class="grid_item_sidebar">
+    <div>
+      <h1><i class="fab fa-bitcoin"></i> Bosshoot</h1>
+    </div>
+    <div>
+    <ul class="sidebar_list">
+      <li><i class="fas fa-home"></i> Dashboard</li>
+      <li><i class="fas fa-cog"></i> Setting</li>
+    </ul>
+  </article>
+
+  <article class="grid_item_list">
+    <div class="flex_container_around">
+      <section class="list_style">
+        <span><i class="fas fa-yen-sign"></i> Total Balance</span>
+        <p class="value"><%= @total_balance %></p>
+        <span><%= @total_balance_difference %>(<%= @total_balance_ratio %>%)</span>
+        <p class="item_description">from last day</p>
+      </section>
+      <section class="list_style">
+        <span><i class="fab fa-btc"></i> BTC Holdings</span>
+        <p class="value">0.206</p>
+        <span>icon. from last day</span>
+      </section>
+      <section class="list_style">
+        <span><i class="fas fa-yen-sign"></i> Profit(last day)</span>
+        <p class="value"><%= @profit %></p>
+        <span><%= @profit_difference %>(<%= @profit_ratio %>%)</span>
+        <p class="item_description">from last day</p>
+      </section>
+      <section class="list_style">
+        <span><i class="fas fa-yen-sign"></i> Profit(30 days)</span>
+        <p class="value"><%= @profit_thirty_days %></p>
+        <span><%= @profit_thirty_days_difference %>(<%= @profit_thirty_days_ratio %>%)</span>
+        <p class="item_description">from 30 days</p>
+      </section>
+      <section class="list_style">
+        <span><i class="fas fa-percent"></i> Profit rate(last day)</span>
+        <p class="value"><%= @profit_rate %></p>
+        <span><%= @profit_rate_difference %>(<%= @profit_rate_ratio %>%)</span>
+        <p class="item_description">from last day</p>
+      </section>
+      <section class="list_style">
+        <span><i class="fas fa-percent"></i> Profit rate(30 days)</span>
+        <p class="value"><%= @profit_rate_thirty_days %></p>
+        <span><%= @profit_rate_thirty_days_difference %>(<%= @profit_rate_thirty_days_ratio %>%)</span>
+        <p class="item_description">from 30 days</p>
+      </section>
+    </div>
+  </article>
+
+  <article class="grid_item_graph">
+    <div class="flex_container_between">
+      <section>
+        <div class="flex_container_between border_bottom">
+          <h3>JPY Balance</h3>
+          <h3>1 week</h3>
+        </div>
+        <div class="graph_size">
+          <canvas id="jpy_balance"></canvas>
+        </div>
+      </section>
+      <section>
+        <div class="flex_container_between border_bottom">
+          <h3>Profit</h3>
+          <h3>1 week</h3>
+        </div>
+        <div class="graph_size">
+          <canvas id="profit"></canvas>
+        </div>
+      </section>
+    </div>
+  </article>
+
+  <footer class="grid_item_footer">
+    <div class="flex_container_center">
+      <p>exchange links</p>
+    </div>
+  </footer>
+</div>

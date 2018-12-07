@@ -35,7 +35,6 @@ class Batches::Broker
   def confirm_start
     puts "Begin confirm_start"
     start_exchange_api
-    p @today_data
     adjust_balance
     puts "End confirm_start"
   end

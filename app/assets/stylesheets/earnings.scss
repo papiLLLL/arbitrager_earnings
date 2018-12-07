@@ -1,3 +1,176 @@
 // Place all the styles related to the earnings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  color: #73879C;
+  background: #F5F8FA;
+  font-size: 13px;
+  font-family: Quicksand, "游ゴシック Medium", "Yu Gothic Medium", 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  line-height: 1.5;
+  margin: 0;
+}
+
+h1 {
+  font-size: 24px;
+  color: #FFFFFF;
+  font-weight: 500;
+  text-align: center;
+}
+
+h3 {
+  font-size: 24px;
+  margin: 10px 15px;
+}
+
+h4 {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+ul {
+  list-style: none;
+}
+
+.border_bottom {
+  border-bottom: 1px solid #ADB2B5;
+  margin-bottom: 20px;
+}
+
+.border_top {
+  border-top: 1px solid #ADB2B5;
+}
+
+.grid_container {
+  display: grid;
+  grid-template-rows: 70px 1fr;
+  grid-template-columns: 210px 1fr;
+}
+
+.flex_container_between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex_container_around {
+  display: flex;
+  justify-content: space-around;
+}
+
+.flex_container_center {
+  display: flex;
+  justify-content: center;
+}
+
+.float div {
+  float: left;
+}
+
+.clear {
+  clear: left;
+}
+
+.grid_item_sidebar {
+  grid-row: 1 / 5;
+  grid-column: 1 / 2;
+  background: #2A3F54;
+}
+
+.grid_item_sidebar i {
+  margin-right: 10px;
+}
+
+.sidebar_list {
+  font-size: 15px;
+  font-weight: 400;
+  color: #FFFFFF;
+  margin: 0;
+  padding: 10px 0 0 20px;
+}
+
+.sidebar_list li {
+  margin-bottom: 20px;
+}
+
+.sidebar_list i {
+  margin-right: 10px;
+}
+
+.grid_item_header {
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+  background: #EDEDED;
+}
+
+.nav_style {
+  margin: 10px 15px;
+}
+
+.nav_style li {
+  margin: 10px 10px 0;
+}
+
+.grid_item_list {
+  grid-row: 2 /3 ;
+  grid-column: 2 /3 ;
+  margin-top: 10px;
+}
+
+.grid_item_list section:not(:first-child) p:before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 0;
+  height: 70px;
+  border-left: 2px solid #ADB2B5;
+}
+
+.list_style {
+  position: relative;
+  padding: 0 10px 0 20px;
+  margin-bottom: 10px;
+}
+
+.value {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 47px;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.item_description {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.grid_item_graph {
+  grid-row: 3 / 4;
+  grid-column: 2 / 3;
+  background: #FFFFFF;
+  margin: 10px 20px 20px;
+}
+
+.graph_size {
+  position: relative;
+  width: 40vw;
+  height: 30vh;
+  margin: 0 20px 10px 10px;
+}
+
+.graph_item_size {
+  width: 20vw;
+  height: 30vh;
+}
+
+.graph_list {
+  font-size: 15px;
+  margin: 0;
+  padding: 5px 0 0 0;
+}
+
+.grid_item_footer {
+  grid-row: 4 / 5;
+  grid-column: 2 / 3;
+  background: #FFFFFF;
+}
