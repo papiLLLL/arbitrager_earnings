@@ -30,7 +30,7 @@ class Batches::Broker
     sleep 1
     start_exchange_api
     p @today_data
-    #start_database_operation
+    start_database_operation
     puts "broker end"
   end
 
