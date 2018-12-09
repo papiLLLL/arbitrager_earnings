@@ -27,9 +27,6 @@ class Coincheck
     # data[5] is order type
     puts "Start check order argument in #{data[0]}"
     return unless data[5] && data[4] > 0.005
-    # Nonce must be incremented measure.
-    # Cause is continuous access, therefore sleep 1sec.
-    sleep 1
     if data[5] == "buy"
       order_market(order_type: "market_buy", market_buy_amount: data[3] * data[4])
     else

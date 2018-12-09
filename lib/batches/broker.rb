@@ -24,11 +24,13 @@ class Batches::Broker
     puts "broker start"
     start_exchange_api
     p @today_data
+    sleep 1
     adjust_balance
     @today_data = Array.new
+    sleep 1
     start_exchange_api
     p @today_data
-    start_database_operation
+    #start_database_operation
     puts "broker end"
   end
 
@@ -36,6 +38,7 @@ class Batches::Broker
     puts "Begin confirm_start"
     start_exchange_api
     p @today_data
+    sleep 1
     adjust_balance
     puts "End confirm_start"
   end
