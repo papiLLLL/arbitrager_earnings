@@ -65,6 +65,7 @@ class Coincheck
 
   def get_signature(uri, key, secret, body = "")
     timestamp = Time.now.to_i.to_s
+    p timestamp
     message = timestamp + uri.to_s + body
     signature = OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new("sha256"), secret, message)
     headers = {
