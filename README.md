@@ -1,24 +1,16 @@
-# README
+# ArbitragerEarnings
+Display profit of arbitrage.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Install
+```
+bundle install --path vendor/bundle
+```
 
-Things you may want to cover:
+## Usage
+Please modify config/default_settings.local.yml and rename settings_local.yml. Then start server.
+```
+bundle exec rails server
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Licence
+[MIT License](https://github.com/yuitoku/arbitrager/blob/master/LICENSE.txt) @ Yuitoku
