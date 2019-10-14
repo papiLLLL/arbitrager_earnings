@@ -26,7 +26,7 @@ class Coincheck
     # data[4] is order amount
     # data[5] is order type
     puts "Start check order argument in #{data[0]}"
-    return unless data[5]
+    return unless data[5] && data[4] > 0.005
     if data[5] == "buy"
       order_market(order_type: "market_buy", market_buy_amount: data[3] * data[4])
     else
@@ -65,6 +65,7 @@ class Coincheck
 
   def get_signature(uri, key, secret, body = "")
     timestamp = Time.now.to_i.to_s
+    p timestamp
     message = timestamp + uri.to_s + body
     signature = OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new("sha256"), secret, message)
     headers = {
